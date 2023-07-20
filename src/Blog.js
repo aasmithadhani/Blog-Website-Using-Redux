@@ -21,6 +21,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import {useDispatch,useSelector} from 'react-redux';
 import { Grid } from "@mui/material";
 
+import './Blog.css'
 
 import {Remove,Update_data} from "./redux/actions/Action"
 import Box from '@mui/material/Box';
@@ -61,12 +62,27 @@ const Blog =()=>
     const [update,setUpdate]=useState("");
     const [ind,setInd] = useState("");
 
+    const [open,setOpen] = useState(false)
+    const[data,setData]=useState({title:"",content:""})
+
+
+    const handleOpen = () =>
+    {
+      setOpen(true);
+    }
+
+    const handle2close = () =>
+    {
+      setOpen(false)
+    }
+
     const handleShow = (el) =>
     {
         setShow(true);
         setUpdate(el);
     }
 
+   
 
     const handleChange =(e)=>
     {
@@ -79,6 +95,8 @@ const Blog =()=>
     }
 
 
+
+
 const handleClose = () => setShow(false);
    
 
@@ -87,6 +105,7 @@ const usertask_update = ()=>
     dispatch(Update_data(update,ind))
     handleClose();
 }
+
     return (
         <>
          <Grid container >
